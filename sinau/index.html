@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Sinau: platform belajar AI untuk pelajar Indonesia." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Sinau</title>
+    <script>
+      // Terapkan tema sebelum React dimuat agar tidak berkedip.
+      try {
+        var a = JSON.parse(localStorage.getItem('sinau:auth') || 'null');
+        var id = ((a && a.user && a.user.id) || 'anon').replace(/[^a-zA-Z0-9_-]/g, '_');
+        var s = JSON.parse(localStorage.getItem('sinau:' + id + ':settings') || '{}');
+        var t = s.theme || 'system';
+        var dark = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
